@@ -7,8 +7,10 @@ int main(void)
 																														fuelEconomy is fuel economy calculated in xL/100kms, tickAmount is amount of gas in L at a given tick count,
 																														gasBefore and gasAfter are gas levels before and after pump vist respectively, gasAdded is amount in L added
 																														during pump visit, fullTank is size of full tank in L, tickCurrent is current level of gas gauge*/
+
 	int tickCountBefore, tickCountAfter, ticksAdded, userResponse;	/*initializes integer variables - tickCountBefore and tickCountAfter is gas bar level before and after pump visit respectively, ticksAdded is increase in gas bar
 																	level, userResponse is user input choice for what they want to do*/
+
 	char userResponseFill, y, n, gasUsedResponse;	/*initializes character variables - userResponseFill is user's response to if they filled the tank, y and n are user inputs for yes and no, gasUsedResponse is user input for how
 													much gas was used in L*/
 
@@ -52,33 +54,33 @@ int main(void)
 			gasUsed = gasAfter - tickAmount;
 			//printf("gasUsed = %.2f \n", gasUsed);
 
-			printf("You had %.2f L of gas after visiting the pump. You used %.2f L of gas since your last pump visit. \n", gasAfter, gasUsed);
+			printf("You had %.2f L of gas after visiting the pump. You used %.2f L of gas since your last pump visit. \n", gasAfter, gasUsed); //prints out result using gasAfter, gasUsed
 		}
 	}
 
-	else if (userResponse == 2)
+	else if (userResponse == 2) //else if statement if user wants to find out their fuel economy
 	{
-		printf("Do you know how much gas (in liters) you have used since your last pump visit? (y/n): \n");
-		scanf_s(" %c", &gasUsedResponse);
+		printf("Do you know how much gas (in liters) you have used since your last pump visit? (y/n): \n"); //prompts user to input y or n to answer the question
+		scanf_s(" %c", &gasUsedResponse); //takes user's input in char form, sets it to gasUsedResponse
 
-		if (gasUsedResponse == 'y')
+		if (gasUsedResponse == 'y') //if statement if user replies with y (they do know how much gas in liters they have used)
 		{
 			printf("How much gas have you used in liters? \n");
-			scanf_s(" %f", &gasUsed);
+			scanf_s(" %f", &gasUsed);//takes user's input in float form, sets it to gasUsed
 
 			printf("How man kilometers have you driven since your last pump visit? \n");
-			scanf_s(" %f", &distanceDriven);
+			scanf_s(" %f", &distanceDriven);// takes user's input in float form, sets it to distanceDriven
 
-			fuelEconomy = 100 * gasUsed / distanceDriven;
-			printf("Your fuel economy is %.2fL/100km. \n", fuelEconomy);
+			fuelEconomy = 100 * gasUsed / distanceDriven; //formula setting fuelEconomy to 100 times the amount of gas used divided by the distance driven
+			printf("Your fuel economy is %.2fL/100km. \n", fuelEconomy); //prints the result of fuelEconomy
 		}
 
-		else if (gasUsedResponse == 'n')
+		else if (gasUsedResponse == 'n') //else if statement if user replies with n (they do not know how much gas in liters they have used)
 		{
-			printf("Did you fill the tank during your last pump visit? (y/n)");
-			scanf_s(" %c", &userResponseFill);
+			printf("Did you fill the tank during your last pump visit? (y/n)"); //prompts user to enter y or n to answer the question
+			scanf_s(" %c", &userResponseFill); //takes user's input in char form, sets it to userReponseFill
 
-			if (userResponseFill == 'y')
+			if (userResponseFill == 'y') //if statement if user replies with y (they did fill the tank)
 			{
 				gasAfter = fullTank;
 				printf("How many ticks are you currently at? \n");
@@ -112,5 +114,3 @@ int main(void)
 			}
 		}
 	}
-
-}
